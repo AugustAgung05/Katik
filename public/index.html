@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katik</title>
+    <link rel="stylesheet" href="src/css/output.css">
+</head>
+<body>
+    
+    <!-- Header section start -->
+        <header class="absolute top-0 left-0 w-full flex items-center z-10">
+            <div class="container">
+                <div class="flex justify-between items-center relative">
+                    <a href="#beranda" class="font-bold text-lg block py-5 lg:text-2xl md:ml-8">Katik</a>
+                    <div class="flex items-center px-4 ">
+                        <button id="hamburger" class="block absolute right-4 md:hidden">
+                            <span class="hamburger-menu duration-300 ease-in-out origin-top-left"></span>
+                            <span class="hamburger-menu duration-300 ease-in-out my-1.5"></span>
+                            <span class="hamburger-menu duration-300 ease-in-out origin-bottom-left"></span>
+                        </button>
+                        <nav id="nav-menu" class="hidden absolute md:border-none py-3 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-1 top-[110%] md:block md:static md:bg-transparent md:max-w-full md:shadow-none md:rounded-none">
+                            <ul class="block md:flex">
+                                <li class="listitem-nav group">
+                                    <a href="#beranda" class="anchor-nav group-hover:text-white">Beranda</a>
+                                </li>
+                                <li class="listitem-nav group">
+                                    <a href="#calculation" class="anchor-nav group-hover:text-white">Perhitungan</a>
+                                </li>
+                                <li class="listitem-nav group">
+                                    <a href="#tentang" class="anchor-nav group-hover:text-white">Tentang</a>
+                                </li>
+                                <li class="listitem-nav group">
+                                    <a href="#kontak" class="anchor-nav group-hover:text-white">Kontak</a>
+                                </li>
+                            </ul>
+                        </nav>  
+                    </div>
+                </div>
+            </div>
+        </header>
+    <!-- Header section end -->
+
+    <!-- Pup up calculation start  -->    
+    <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 duration-300 hidden opacity-0 z-[999]">
+        <div id="allContainer" class="flex justify-center items-center min-h-screen">
+            <div id="modalContent" class="container bg-primary rounded-lg shadow-lg w-[90%] duration-300 scale-0 p-0 xl:w-[50%]">
+                <div class="flex justify-center sm:justify-start p-4">
+                  <svg width="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15 14H16V23H17M29 16C29 19.4478 27.6304 22.7544 25.1924 25.1924C22.7544 27.6304 19.4478 29 16 29C12.5522 29 9.24559 27.6304 6.80761 25.1924C4.36964 22.7544 3 19.4478 3 16C3 12.5522 4.36964 9.24559 6.80761 6.80761C9.24558 4.36964 12.5522 3 16 3C19.4478 3 22.7544 4.36964 25.1924 6.80761C27.6304 9.24558 29 12.5522 29 16Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16.75 9.5C16.75 9.91421 16.4142 10.25 16 10.25C15.5858 10.25 15.25 9.91421 15.25 9.5C15.25 9.08579 15.5858 8.75 16 8.75C16.4142 8.75 16.75 9.08579 16.75 9.5Z" fill="#2E4454" stroke="#000000" stroke-width="1.5"/>
+                  </svg>
+                  <!-- Niatnya ini untuk direct ke cara perhitungan -->
+                  <h3 id="headerContent" class="font-semibold justify-center text-sm self-center pl-1">Persegi</h3>
+                </div>
+                <hr class="border-black">
+              <div class="text-xs sm:text-sm sm:flex sm:flex-wrap sm:justify-between">
+    
+                  <div class="pt-4 pb-3 sm:pb-0 mx-2 sm:w-[17%] sm:space-y-4">
+                    <div class="flex justify-between sm:pr-2 flex-wrap">
+                      <h3 id="headerContent1" class="font-semibold sm:w-full">Panjang</h3>
+                      <div class="sm:w-full sm:text-center relative">
+                        <p id="content1" class="pr-5"></p>
+                        <span class="font-thin absolute top-0 right-0">cm</span>
+                      </div>
+                    </div>
+                    <div class="flex justify-between sm:pr-2 mt-2 flex-wrap">
+                      <h3 id="headerContent2" class="font-semibold">Lebar</h3>
+                      <div class="sm:w-full sm:text-center relative">
+                        <p id="content2" class="pr-5"></p>
+                        <span class="font-thin absolute top-0 right-0">cm</span>
+                      </div>
+                    </div>
+                    <div class="flex justify-between sm:pr-2 mt-2 flex-wrap">
+                      <h3 id="headerContent3" class="font-semibold sm:w-full">Tinggi</h3>
+                      <div class="sm:w-full sm:text-center relative">
+                        <p id="content3" class="pr-5"></p>
+                        <span class="font-thin absolute top-0 right-0">cm</span>
+                      </div>
+                    </div>
+                    <div class="hidden sm:pr-2 mt-2">
+                        <div class="flex justify-between flex-wrap">
+                          <h3 id="headerContent4" class="font-semibold sm:w-full"></h3>
+                          <div class="sm:w-full sm:text-center relative">
+                            <p id="content4" class="pr-5"></p>
+                            <span class="font-thin absolute top-0 right-0">cm</span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="hidden sm:pr-2 mt-2">
+                        <div class="flex justify-between flex-wrap">
+                          <h3 id="headerContent5" class="font-semibold sm:w-full"></h3>
+                          <div class="sm:w-full sm:text-center relative">
+                            <p id="content5" class="pr-5"></p>
+                            <span class="font-thin absolute top-0 right-0">cm</span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+    
+                  <hr id="border1" class="sm:h-[160px] border-black sm:border-r">
+    
+                  <div class="my-4 mx-2 sm:w-[40%] sm:flex sm:flex-wrap sm:self-center sm:gap-6">
+                    <div class="flex justify-between sm:px-2 sm:block sm:-mt-3 w-full">
+                      <h3 class="font-semibold">Rumus Keliling</h3>
+                      <p id="rumusKeliling" class="text-end sm:text-start sm:pl-2"></p>
+                    </div>
+                    <div class="flex justify-between mt-2 sm:px-2 sm:block w-full">
+                      <h3 class="font-semibold">Rumus Luas</h3>
+                      <p id="rumusLuas" class="text-end sm:text-start sm:pl-2"></p>
+                    </div>
+                  </div>
+    
+                  <hr id="border2" class="sm:h-[160px] border-black sm:border-r">
+                  <div class="my-4 flex justify-between mx-2 sm:w-[33%] sm:flex-wrap sm:self-center sm:gap-2">
+                    <div class="sm:pl-2 sm:w-full">
+                      <h3 class="font-semibold">Perhitungan Keliling</h3>
+                      <div class="pl-2">
+                        <p id="calculateKeliling"></p>
+                        <p><span id="resultKeliling"></span><span class="font-thin"> cm</span></p>
+                      </div>
+                    </div>
+                    <div class="sm:pl-2 sm:w-full sm:mt-2">
+                      <h3 class="font-semibold">Perhitungan Luas</h3>
+                      <div class="pl-2">
+                        <p id="calculateLuas"></p>
+                        <p><span id="resultLuas"></span><span class="font-thin"> cm</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <hr class="border-black">
+                <div class="flex justify-between w-full text-xs p-2">
+                  <button id="closeModalBtn" class="bg-red-600 text-white px-4 py-2 rounded">Close</button>
+                  <button id="closeModalBtn" class="bg-green-600 text-white px-4 py-2 rounded">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pup up calculation end  -->
+
+    <!-- Pop up info start -->
+    <div id="modalOverlay2" class="fixed inset-0 bg-black bg-opacity-50 duration-300 hidden opacity-0 z-[999]">
+        <div id="allContainer2" class="flex justify-center items-end min-h-screen">
+            <div id="infoContainer2" class="bg-secondary w-screen mx-auto px-3 pt-5 pb-10 relative duration-300 translate-y-[100%] ">
+                <button id="closeButton" class="absolute top-4 right-1">
+                        <span class="x-line origin-top-left rotate-[45deg]"></span>
+                        <span class="x-line opacity-0 my-[3.7px]"></span>
+                        <span class="x-line origin-bottom-left rotate-[-45deg]"></span>
+                </button>
+                <h1 id="infoHeader" class="text-sm -mt-1.5 mb-3 font-semibold">Persegi</h1>
+                <div class="text-xs">
+                    <p id="infoContent2" class="max-w-[80vw] text-justify leading-4 mb-4">
+                    Persegi adalah bangun datar dua dimensi yang dibentuk oleh empat sisi yang sama panjang dan memiliki empat sudut siku-siku.
+                    </p>
+                    <p><span class="font-semibold">Luas </span><span id="infoLuas">sisi x sisi</span></p>
+                    <p class="mt-2"><span class="font-semibold">Keliling </span><span id="infoKeliling">4 x sisi</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pop up info end -->
+    
+    <!-- Home section start -->
+    <section id="beranda" class="pt-28 pb-20 md:pt-20 bg-secondary">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full px-6 self-center md:w-1/2">
+                    <h2 class="font-semibold text-2xl xl:text-3xl">Hai, selamat datang</h2>
+                    <h3 class="pt-6 text-lg xl:text-xl">Tempat dimana kamu mencari <b>keliling</b> dan <b>luas</b> sebuah bangun datar<h3>
+                    <h1 class="pt-6 text-2xl font-bold xl:text-4xl">Katik adalah asistenmu</h1>
+                </div>
+                <div class="w-full mt-16 md:w-1/2">
+                    <div class="max-w-[600px] relative mx-auto">
+                        <img class="max-w-full s:max-w-[400px] s:mx-auto sm:max-w-[450px] md:max-w-full" src="assets/Calculator Full.png" alt="Calculator Full">
+    
+                        <span class="absolute top-[1%] right-[1%] s:right-[5%] sm:right-[10%] md:right-[3%] xl:right-[5%] ">
+                            <img class="w-16 xs:w-20 s:w-24 sm:w-28 md:w-20 l:w-24 lg:w-28" src="assets/Calculator.png" alt="Calculator" >
+                        </span>
+                        <span class="absolute top-[20%] left-[-5%] s:left-[-1%] sm:left-[5%] md:left-[-3%] xl:left-[1%]">
+                            <img class="w-16 xs:w-20 s:w-24 sm:w-28 md:w-20 l:w-24 lg:w-28" src="assets/Error.png" alt="Error" >
+                        </span>
+                        <span class="absolute bottom-[25%] right-[-4%] s:right-[1%] sm:right-[6%] md:right-[-1%] xl:right-[1%]"> 
+                            <img class="w-16 xs:w-20 s:w-24 sm:w-28 md:w-20 l:w-24 lg:w-28" src="assets/Gear.png" alt="Gear" >
+                        </span>
+                        <span class="absolute bottom-[5%] left-[3%] s:left-[6%] sm:left-[11%] md:left-[3%] xl:left-[6%]">
+                            <img class="w-16 xs:w-20 s:w-24 sm:w-28 md:w-20 l:w-24 lg:w-28" src="assets/Pencil.png" alt="Pencil" >
+                        </span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+    <!-- Home section end-->
+
+    <!-- Calculation section start -->
+    <section id="calculation" class="pt-20 pb-12 bg-primary">
+        <div class="container">
+            <div class="flex flex-col justify-between">
+                <div class="w-full flex justify-between mx-auto border border-dark px-3 xl:px-8 h-[50px] s:h-[70px] xl:h-[100px] rounded-lg shadow-lg bg-calculation">
+                    <h3 id="headerBangunDatar" class="self-center font-bold text-sm s:text-base md:text-xbase lg:text-lg xl:text-xl 2xl:text-2xl">Persegi</h3>
+                    <select id="bangunDatar" class="w-[130px] sm:w-[160px] l:w-[180px] xl:w-[200px] bg-primary h-[30px] s:h-[40px] xl:h-[60px] self-center rounded-lg pl-2 shadow-md text-sm sm:text-base l:text-xbase xl:font-semibold xl:text-lg">
+                        <option value="Persegi Body" selected>Persegi</option>
+                        <option value="Persegi Panjang Body">Persegi panjang</option>
+                        <option value="Lingkaran Body">Lingkaran</option>
+                        <option value="Segitiga Body">Segitiga</option>
+                        <option value="Trapesium Body">Trapesium</option>
+                        <option value="Jajargenjang Body">Jajargenjang</option>
+                        <option value="Layang-layang Body">Layang-layang</option>
+                        <option value="Belah Ketupat Body">Belah ketupat</option>
+                    </select>
+                </div>
+                <div class="w-full mt-6 ">
+                    <div class="border border-dark py-4 md:py-2 xl:pt-4 px-4 rounded-lg shadow-lg bg-calculation">
+                        <div class="relative flex flex-wrap flex-col justify-between md:flex-nowrap md:flex-row xl:mx-4">
+                            <!-- Pop up info start-->
+                            <div class="absolute -top-2 -right-2 md:top-0">
+                                <button id="infoButton">
+                                    <svg width="20" class="l:w-6 xl:w-7" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 14H16V23H17M29 16C29 19.4478 27.6304 22.7544 25.1924 25.1924C22.7544 27.6304 19.4478 29 16 29C12.5522 29 9.24559 27.6304 6.80761 25.1924C4.36964 22.7544 3 19.4478 3 16C3 12.5522 4.36964 9.24559 6.80761 6.80761C9.24558 4.36964 12.5522 3 16 3C19.4478 3 22.7544 4.36964 25.1924 6.80761C27.6304 9.24558 29 12.5522 29 16Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16.75 9.5C16.75 9.91421 16.4142 10.25 16 10.25C15.5858 10.25 15.25 9.91421 15.25 9.5C15.25 9.08579 15.5858 8.75 16 8.75C16.4142 8.75 16.75 9.08579 16.75 9.5Z" fill="#2E4454" stroke="#000000" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="infoContainer" class="absolute bg-secondary z-[999] w-full max-w-[250px] lg:max-w-[320px] top-[15px] md:top-6 l:top-7 xl:top-8 -right-3 xl:-right-2 rounded-md px-2 py-3 after:content-[''] after:absolute after:right-[7px] after:-top-1.5 after:w-0 after:h-0 after:border-l-8 after:border-r-8 after:border-b-8 after:border-b-secondary after:border-transparent hidden duration-300 scale-0">
+                                <p id="infoContent" class="text-xs text-justify l:text-sm 2xl:text-base 2xl:leading-5">Persegi adalah bangun datar dua dimensi yang dibentuk oleh empat sisi yang sama panjang dan memiliki empat sudut siku-siku.
+                                </p>
+                            </div>
+                            <!-- Pop up info end -->
+                            <form id="formCalculate" class="w-full space-y-6 l:space-y-10 md:ml-4 md:mt-3 lg:mt-8 order-2 md:w-1/2 md:order-none lg:w-[40%] xl:w-1/2">
+                                <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
+                                    <label id="input1Label" for="input1" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center">Sisi</label>
+                                    <div class="flex mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
+                                        <input type="number" id="input1" placeholder="1" required class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
+                                        <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
+                                    </div>
+                                </div>
+                                <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
+                                    <label id="input2Label" for="input2" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
+                                    <div class="flex mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
+                                        <input type="number" id="input2" placeholder="1" disabled class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6" required>
+                                        <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
+                                    </div>
+                                </div>
+                                <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
+                                    <label id="input3Label" for="input3" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
+                                    <div class="flex mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
+                                        <input type="number" id="input3" placeholder="1" disabled class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6" required>
+                                        <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
+                                    </div>
+                                </div>
+                                <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
+                                    <label id="input4Label" for="input4" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
+                                    <div id="input4Container" class="hidden mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
+                                        <div class="flex">
+                                            <input type="number" id="input4" placeholder="1" class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
+                                            <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
+                                    <label id="input5Label" for="input5" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
+                                    <div id="input5Container" class="hidden mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
+                                        <div class="flex">
+                                            <input type="number" id="input5" placeholder="1" class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
+                                            <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center mt-6 2xl:mt-10 md:absolute md:-bottom-8 md:right-[250px] l:right-[330px] lg:right-[380px] xl:right-[450px] 2xl:right-[580px]">
+                                    <button class="w-[100px] s:w-[120px] md:w-[150px] lg:w-[170px] xl:w-[190px] py-2 bg-primary font-semibold rounded-full shadow-md md:py-3 xl:py-4 text-sm md:text-base lg:text-lg 2xl:text-xl">Calculate</button>
+                                </div>
+                            </form>
+                            <div class="w-full flex justify-center my-10 order-1 md:w-1/2 md:order-none md:my-0 md:items-center">
+                                <img id="displayBangunDatar" src="./assets/bangun_datar/Persegi Body.png" class="my-auto s:w-[88px] md:w-32 md:h-32 l:w-40 l:h-40 lg:w-44 lg:h-44 xl:w-56 xl:h-56 2xl:w-60 2xl:h-60 md:mt-[34px] l:mt-10 lg:mt-20 xl:mt-20 2xl:mt-16">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Calculation section end -->
+     
+    <!-- About section start -->
+    <section id="tentang" class="pt-20 bg-secondary">
+        <div class="container">
+            <div class="py-6 px-6 border-2 rounded-sm text-sm l:text-base xl:text-xbase leading-5 text-justify">
+                <h3 class="font-bold">Tentang Kami</h3>
+                <p class="mt-2">
+                    <span class="pl-2">Selamat</span> datang di Katik, sumber utama Anda dalam perhitungan geometri untuk berbagai bangun datar. Kami berdedikasi untuk menyediakan alat yang intuitif dan mudah digunakan, yang dirancang khusus untuk memfasilitasi perhitungan keliling dan luas secara akurat. Baik Anda seorang pelajar yang mencari bantuan dalam tugas matematika, seorang profesional yang membutuhkan perhitungan cepat untuk pekerjaan sehari-hari, atau sekadar penggemar geometri, Katik siap membantu Anda.
+                </p>
+                <h3 class="font-bold mt-5 md:mt-6">Layanan Kami</h3>
+                <p class="mt-2">
+                    <span class="pl-2">Di Katik, kami memahami pentingnya kemudahan dalam proses belajar dan bekerja. Oleh karena itu, kami menawarkan kalkulator yang dapat menghitung keliling dan luas untuk berbagai bangun datar, termasuk:</span>
+                </p>
+                <ul class="my-3 ml-4 list-disc space-y-2 md:space-y-4">
+                    <li>
+                      <span class="font-semibold">Persegi:</span> Menghitung keliling dan luas berdasarkan panjang sisi.
+                    </li>
+                    <li>
+                      <span class="font-semibold">Persegi Panjang:</span> Menghitung keliling dan luas berdasarkan panjang dan lebar.
+                    </li>
+                    <li>
+                      <span class="font-semibold">Lingkaran:</span> Menghitung keliling dan luas berdasarkan jari-jari atau diameter.
+                    </li>
+                    <li>
+                      <span class="font-semibold">Segitiga:</span> Menghitung keliling dan luas dengan berbagai metode, termasuk alas dan tinggi, atau menggunakan panjang ketiga sisinya.
+                    </li>
+                    <li>
+                      <span class="font-semibold">Belah Ketupat:</span> Menghitung keliling dan luas berdasarkan panjang diagonal.
+                    </li>
+                    <li>
+                      <span class="font-semibold">Trapesium:</span> Menghitung keliling dan luas berdasarkan panjang sisi-sisi sejajar dan tinggi.
+                    </li>
+                    <li>
+                      <span class="font-semibold">Layang-layang:</span> Menghitung keliling dan luas berdasarkan panjang diagonal.
+                    </li>
+                  </ul>
+
+                <h3 class="font-bold mt-5 md:mt-6">Komitmen Kami</h3>
+                <p class="mt-2">
+                    <span class="pl-2">Di Katik, </span>kami berkomitmen untuk memberikan pengalaman pengguna yang unggul melalui antarmuka yang ramah pengguna dan instruksi yang jelas. Kami percaya bahwa setiap orang, baik di bidang akademik maupun profesional, harus memiliki akses ke alat yang mempermudah perhitungan matematis, tanpa hambatan dan dengan hasil yang dapat diandalkan.
+                </p>
+                
+                <h3 class="font-bold mt-5 md:mt-6">Misi Kami</h3>
+                <p class="mt-2">
+                    <span class="pl-2">Misi</span> kami adalah menyediakan platform perhitungan geometri yang bisa diakses dan dimanfaatkan oleh semua kalangan. Kami ingin menjadi alat yang terpercaya, mendukung proses belajar mengajar, serta memfasilitasi pekerjaan para profesional dengan solusi cepat dan tepat dalam menghitung keliling dan luas bangun datar.
+                </p>
+                
+                <h3 class="font-bold mt-5 md:mt-6">Visi Kami</h3> 
+                <p class="mt-2">
+                    <span class="pl-2">Visi</span> kami adalah menjadi platform terdepan di dunia perhitungan geometri, yang dikenal karena kehandalan dan kemudahan penggunaannya. Kami bercita-cita untuk menjadi sumber daya yang dihargai dan diandalkan oleh komunitas pendidikan serta profesional, menjadikan Katik sebagai mitra utama dalam setiap kebutuhan perhitungan geometri Anda.
+                </p> 
+                <p class="mt-2">
+                    Jika Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, jangan ragu untuk menghubungi kami pada bagian <span class="underline"><a href="#kontak">beri kami masukan</a></span> dibawah ini. Terima kasih telah memilih Katik sebagai alat bantu perhitungan geometri Anda. 
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- About section end -->
+     
+    <!-- Footer section start -->
+    <footer class=" mt-8 pt-8 bg-footer" id="kontak">
+        <div class="container">
+            <div class="flex flex-wrap text-xs md:text-sm text-white xl:text-base">
+                <h3 class="w-full font-semibold text-xbase md:text-lg xl:text-xl mb-4 l:text-lg">Katik</h3>
+                <div class="w-full l:w-1/2">
+                    <div class="flex justify-between">
+                        <div class="w-1/2">
+                           <h3 class="font-semibold text-sm md:text-base xl:text-xbase">Tentang Kami</h3>
+                           <div class="pl-1 mt-2">
+                               <p class="font-light">Katik sumber utama Anda untuk menghitung keliling dan luas berbagai bangun datar dengan mudah dan cepat. </p> 
+                           </div>
+                        </div>
+                        <div class="mr-6 l:mr-16 xl:mr-24">
+                            <h3 class="font-semibold text-sm md:text-base xl:text-xbase">Navigasi</h3>
+                            <ul class="font-light mt-2 space-y-[6px] pl-1">
+                                <li class="group">
+                                    <a href="#beranda" class="group-hover:text-dark">Beranda</a>
+                                </li>
+                                <li class="group">
+                                    <a href="#perhitungan" class="group-hover:text-dark">Perhitungan</a>
+                                </li>
+                                <li class="group">
+                                    <a href="#tentang" class="group-hover:text-dark">Tentang</a>
+                                </li>
+                                <li class="group">
+                                    <a href="#kontaks" class="group-hover:text-dark">Kontak</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full l:w-1/2">
+                    <h3 class="font-semibold text-sm md:text-base xl:text-xbase">Beri Kami Masukan</h3>
+                    <form id="contactAdmin">
+                        <div class="pl-1 mt-[10px] text-dark text-xs l:text-base">
+                            <div class="w-full flex justify-between gap-2">
+                                <input type="text" placeholder="Nama lengkap" id="name" class="pl-2 placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base rounded-sm w-[50%] p-2" required>
+                                <input type="email" placeholder="Alamat email" id="email" class="pl-2 placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base rounded-sm w-[50%] p-2" required>
+                            </div>
+                            <textarea placeholder="Tinggalkan pesan anda..." id="message" class="w-full text-dark h-28 p-2 mt-2 border rounded-sm resize-none placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base" required></textarea>
+                            <div class="flex justify-center mt-1 l:mt-[2px]">
+                                <button class="bg-primary w-full rounded-sm py-2 text-dark font-semibold text-sm md:text-base xl:text-xbase hover:text-white duration-200">Kirim Pesan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="w-full relative">
+                    <div class="w-full flex flex-wrap justify-center gap-1 l:absolute l:max-w-max l:top-[-100px] l:justify-start">
+                        <h3 class="w-full font-semibold text-sm md:text-base xl:text-xbase text-center mt-6 mb-2 l:text-start">Ikuti Kami</h3>
+                        <!-- WhatsApp SVG -->
+                        <div class="flex bg-navigation justify-center rounded-full w-[40px] h-[40px] items-center">
+                            <a href="https://wa.me/6285778208790">
+                                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="23" fill="#ffffff" class="hover:fill-dark duration-200"><title>WhatsApp</title>
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- WhatsApp SVG -->
+
+                        <!-- Instagram SVG -->
+                        <div class="flex bg-navigation justify-center rounded-full w-[40px] h-[40px] items-center"">
+                            <a href="https://www.instagram.com/anandast.05/" class="hover:text-white">
+                                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="23" fill="#ffffff" class="hover:fill-dark duration-200"><title>Instagram</title>
+                                    <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- Instagram SVG -->
+
+                        <!-- Email SVG -->
+                        <div class="flex bg-navigation justify-center rounded-full w-[40px] h-[40px] items-center">
+                            <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSDbttvvTzKHKcvkLMprJkfQgHhlZKRhsVdBpVwqGCWLgwWGsNWVcNwHcCTrDNzMXmVCRXPC" class="hover:fill-dark">
+                                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="23" fill="#ffffff" class="hover:fill-dark duration-200"><title>Gmail</title>
+                                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- Email SVG -->
+                        
+                        <!-- LinkedIn SVG -->
+                        <div class="flex bg-navigation justify-center rounded-full w-[40px] h-[40px] items-center">
+                            <a href="https://www.linkedin.com/in/ananda-agung-styadi-a62654258/" class="hover:fill-dark">
+                                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="23" fill="#ffffff" class="hover:fill-dark duration-200"><title>LinkedIn</title>
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- LinkedIn SVG -->
+
+                        <!-- Github SVG -->
+                        <div class="flex bg-navigation justify-center rounded-full w-[40px] h-[40px] items-center">
+                        <a href="https://github.com/AugustAgung05" class="hover:fill-dark">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="23" fill="#ffffff" class="hover:fill-dark duration-200"><title>GitHub</title>
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
+                        </div>
+                        <!-- Github SVG -->
+                    </div>
+                    <hr class="opacity-50 mt-6">
+                    <div class="flex flex-wrap gap-1.5 sm:gap-0 text-center justify-between sm:text-start text-xxs md:text-xs xl:text-sm my-2 opacity-70">
+                        <p class="w-full sm:w-1/2"><span class="pr-[2px]">&copy;</span>2023 - 2024 Katik. All right reversed</p>
+                        <p class="w-full sm:w-1/2 sm:text-end">Versi 2.2.6 - Terakhir diperbarui Agustus 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+     
+    <script src="../dist/bundle.js"></script>
+</body>
+</html>
