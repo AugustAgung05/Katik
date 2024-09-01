@@ -41,10 +41,10 @@
         </header>
     <!-- Header section end -->
 
-    <!-- Pup up calculation start  -->    
+    <!-- Pop up calculation start  -->    
     <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 duration-300 hidden opacity-0 z-[999]">
         <div id="allContainer" class="flex justify-center items-center min-h-screen">
-            <div id="modalContent" class="container bg-primary rounded-lg shadow-lg w-[90%] duration-300 scale-0 p-0 xl:w-[50%]">
+            <div id="modalContent" class="container bg-primary rounded-lg shadow-lg w-[90%] s:w-[364px] sm:w-[90%] md:w-[600px] lg:w-[800px] duration-300 scale-0 p-0">
                 <div class="flex justify-center sm:justify-start p-4">
                   <svg width="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M15 14H16V23H17M29 16C29 19.4478 27.6304 22.7544 25.1924 25.1924C22.7544 27.6304 19.4478 29 16 29C12.5522 29 9.24559 27.6304 6.80761 25.1924C4.36964 22.7544 3 19.4478 3 16C3 12.5522 4.36964 9.24559 6.80761 6.80761C9.24558 4.36964 12.5522 3 16 3C19.4478 3 22.7544 4.36964 25.1924 6.80761C27.6304 9.24558 29 12.5522 29 16Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,21 +61,21 @@
                       <h3 id="headerContent1" class="font-semibold sm:w-full">Panjang</h3>
                       <div class="sm:w-full sm:text-center relative">
                         <p id="content1" class="pr-5"></p>
-                        <span class="font-thin absolute top-0 right-0">cm</span>
+                        <span class="font-thin absolute top-0 right-0 opacity-50">cm</span>
                       </div>
                     </div>
                     <div class="flex justify-between sm:pr-2 mt-2 flex-wrap">
                       <h3 id="headerContent2" class="font-semibold">Lebar</h3>
                       <div class="sm:w-full sm:text-center relative">
                         <p id="content2" class="pr-5"></p>
-                        <span class="font-thin absolute top-0 right-0">cm</span>
+                        <span class="font-thin absolute top-0 right-0 opacity-50">cm</span>
                       </div>
                     </div>
                     <div class="flex justify-between sm:pr-2 mt-2 flex-wrap">
                       <h3 id="headerContent3" class="font-semibold sm:w-full">Tinggi</h3>
                       <div class="sm:w-full sm:text-center relative">
                         <p id="content3" class="pr-5"></p>
-                        <span class="font-thin absolute top-0 right-0">cm</span>
+                        <span class="font-thin absolute top-0 right-0 opacity-50">cm</span>
                       </div>
                     </div>
                     <div class="hidden sm:pr-2 mt-2">
@@ -83,7 +83,7 @@
                           <h3 id="headerContent4" class="font-semibold sm:w-full"></h3>
                           <div class="sm:w-full sm:text-center relative">
                             <p id="content4" class="pr-5"></p>
-                            <span class="font-thin absolute top-0 right-0">cm</span>
+                            <span class="font-thin absolute top-0 right-0 opacity-50">cm</span>
                           </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                           <h3 id="headerContent5" class="font-semibold sm:w-full"></h3>
                           <div class="sm:w-full sm:text-center relative">
                             <p id="content5" class="pr-5"></p>
-                            <span class="font-thin absolute top-0 right-0">cm</span>
+                            <span class="font-thin absolute top-0 right-0 opacity-50">cm</span>
                           </div>
                         </div>
                     </div>
@@ -117,23 +117,22 @@
                       <h3 class="font-semibold">Perhitungan Keliling</h3>
                       <div class="pl-2">
                         <p id="calculateKeliling"></p>
-                        <p><span id="resultKeliling"></span><span class="font-thin"> cm</span></p>
+                        <p><span id="resultKeliling"></span><span class="font-thin opacity-50"> cm</span></p>
                       </div>
                     </div>
                     <div class="sm:pl-2 sm:w-full sm:mt-2">
-                      <h3 class="font-semibold">Perhitungan Luas</h3>
+                      <h3 class="font-semibold text-end sm:text-start">Perhitungan Luas</h3>
                       <div class="pl-2">
                         <p id="calculateLuas"></p>
-                        <p><span id="resultLuas"></span><span class="font-thin"> cm</span></p>
+                        <p><span id="resultLuas"></span><span class="font-thin opacity-50"> cm</span></p>
                       </div>
                     </div>
                   </div>
                   
                 </div>
                 <hr class="border-black">
-                <div class="flex justify-between w-full text-xs p-2">
-                  <button id="closeModalBtn" class="bg-red-600 text-white px-4 py-2 rounded">Close</button>
-                  <button id="closeModalBtn" class="bg-green-600 text-white px-4 py-2 rounded">Close</button>
+                <div class="flex justify-end w-full text-xs p-2">
+                  <button id="closeModalBtn" class="bg-button text-white px-4 py-2 rounded">Close</button>
                 </div>
             </div>
         </div>
@@ -198,7 +197,7 @@
     <section id="calculation" class="pt-20 pb-12 bg-primary">
         <div class="container">
             <div class="flex flex-col justify-between">
-                <div class="w-full flex justify-between mx-auto border border-dark px-3 xl:px-8 h-[50px] s:h-[70px] xl:h-[100px] rounded-lg shadow-lg bg-calculation">
+                <div class="w-full flex justify-between mx-auto px-3 xl:px-8 h-[50px] s:h-[70px] xl:h-[100px] rounded-lg shadow-lg bg-calculation">
                     <h3 id="headerBangunDatar" class="self-center font-bold text-sm s:text-base md:text-xbase lg:text-lg xl:text-xl 2xl:text-2xl">Persegi</h3>
                     <select id="bangunDatar" class="w-[130px] sm:w-[160px] l:w-[180px] xl:w-[200px] bg-primary h-[30px] s:h-[40px] xl:h-[60px] self-center rounded-lg pl-2 shadow-md text-sm sm:text-base l:text-xbase xl:font-semibold xl:text-lg">
                         <option value="Persegi Body" selected>Persegi</option>
@@ -212,7 +211,7 @@
                     </select>
                 </div>
                 <div class="w-full mt-6 ">
-                    <div class="border border-dark py-4 md:py-2 xl:pt-4 px-4 rounded-lg shadow-lg bg-calculation">
+                    <div class="py-4 md:py-2 xl:pt-4 px-4 rounded-lg shadow-lg bg-calculation">
                         <div class="relative flex flex-wrap flex-col justify-between md:flex-nowrap md:flex-row xl:mx-4">
                             <!-- Pop up info start-->
                             <div class="absolute -top-2 -right-2 md:top-0">
@@ -232,21 +231,21 @@
                                 <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
                                     <label id="input1Label" for="input1" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center">Sisi</label>
                                     <div class="flex mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
-                                        <input type="number" id="input1" placeholder="1" required class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
+                                        <input type="number" id="input1" placeholder="1" required class="w-full border-2 border-border placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
                                         <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
                                     </div>
                                 </div>
                                 <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
                                     <label id="input2Label" for="input2" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
                                     <div class="flex mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
-                                        <input type="number" id="input2" placeholder="1" disabled class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6" required>
+                                        <input type="number" id="input2" placeholder="1" disabled class="w-full border-2 border-border placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6" required>
                                         <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
                                     </div>
                                 </div>
                                 <div class="text-xs sm:text-sm lg:text-xbase md:flex md:justify-between lg:flex-wrap">
                                     <label id="input3Label" for="input3" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
                                     <div class="flex mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
-                                        <input type="number" id="input3" placeholder="1" disabled class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6" required>
+                                        <input type="number" id="input3" placeholder="1" disabled class="w-full border-2 border-border placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6" required>
                                         <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
                                     </div>
                                 </div>
@@ -254,7 +253,7 @@
                                     <label id="input4Label" for="input4" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
                                     <div id="input4Container" class="hidden mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
                                         <div class="flex">
-                                            <input type="number" id="input4" placeholder="1" class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
+                                            <input type="number" id="input4" placeholder="1" class="w-full border-2 border-border placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
                                             <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
                                         </div>
                                     </div>
@@ -263,7 +262,7 @@
                                     <label id="input5Label" for="input5" class="font-semibold md:text-base l:text-xbase lg:text-xbase 2xl:text-xl md:max-w-[40%] lg:w-full self-center"></label>
                                     <div id="input5Container" class="hidden mt-1 s:mt-2 md:w-1/2 lg:w-full md:mr-8">
                                         <div class="flex">
-                                            <input type="number" id="input5" placeholder="1" class="w-full border-2 placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
+                                            <input type="number" id="input5" placeholder="1" class="w-full border-2 border-border placeholder:text-xs s:placeholder:text-sm l:placeholder:text-xbase xl:placeholder:text-lg rounded-sm h-5 text-end p-3 text-xs sm:text-sm md:text-base lg:text-xbase xl:text-lg md:p-4 xl:p-6">
                                             <p class="pl-1 font-thin text-xs sm:text-sm text-gray-400 self-center lg:text-base xl:text-xbase">cm</p>
                                         </div>
                                     </div>
@@ -286,7 +285,7 @@
     <!-- About section start -->
     <section id="tentang" class="pt-20 bg-secondary">
         <div class="container">
-            <div class="py-6 px-6 border-2 rounded-sm text-sm l:text-base xl:text-xbase leading-5 text-justify">
+            <div class="py-6 px-6 border-2 border-border rounded-sm text-sm l:text-base xl:text-xbase leading-5 text-justify">
                 <h3 class="font-bold">Tentang Kami</h3>
                 <p class="mt-2">
                     <span class="pl-2">Selamat</span> datang di Katik, sumber utama Anda dalam perhitungan geometri untuk berbagai bangun datar. Kami berdedikasi untuk menyediakan alat yang intuitif dan mudah digunakan, yang dirancang khusus untuk memfasilitasi perhitungan keliling dan luas secara akurat. Baik Anda seorang pelajar yang mencari bantuan dalam tugas matematika, seorang profesional yang membutuhkan perhitungan cepat untuk pekerjaan sehari-hari, atau sekadar penggemar geometri, Katik siap membantu Anda.
@@ -381,7 +380,7 @@
                                 <input type="text" placeholder="Nama lengkap" id="name" class="pl-2 placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base rounded-sm w-[50%] p-2" required>
                                 <input type="email" placeholder="Alamat email" id="email" class="pl-2 placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base rounded-sm w-[50%] p-2" required>
                             </div>
-                            <textarea placeholder="Tinggalkan pesan anda..." id="message" class="w-full text-dark h-28 p-2 mt-2 border rounded-sm resize-none placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base" required></textarea>
+                            <textarea placeholder="Tinggalkan pesan anda..." id="message" class="w-full text-dark h-28 p-2 mt-2 rounded-sm resize-none placeholder:text-xs md:placeholder:text-sm xl:placeholder:text-base" required></textarea>
                             <div class="flex justify-center mt-1 l:mt-[2px]">
                                 <button class="bg-primary w-full rounded-sm py-2 text-dark font-semibold text-sm md:text-base xl:text-xbase hover:text-white duration-200">Kirim Pesan</button>
                             </div>
