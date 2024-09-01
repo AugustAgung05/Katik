@@ -11,17 +11,26 @@ const infoButton = document.getElementById('infoButton');
 formCalculate.addEventListener('submit', (e) => {
     e.preventDefault();
     if(checkInputLength() === true) return;
+    const rumusLuas = document.querySelector('#rumusLuas');
+    const rumusKeliling = document.querySelector('#rumusKeliling');
+    const headerContent = document.querySelector('#headerContent');
+    
+    const resultKeliling = document.querySelector('#resultKeliling');
+    const resultLuas = document.querySelector('#resultLuas');
+    
+    rumusLuas.textContent = rumusLuasBangunDatar();
+    rumusKeliling.textContent = rumusKelilingBangunDatar();
+    headerContent.textContent = checkBangunDatar();
+
+    resultKeliling.textContent = `=  ${calculateKelilingBangunDatar()}`;
+    resultLuas.textContent = `= ${calculateLuasBangunDatar()}`;
+
     modalOverlay.classList.remove('hidden');
 
     setTimeout(() => {
         modalOverlay.classList.add('open-transition');
         modalContent.classList.add('scale-transition');
     }, 10);//untuk triger animasi
-    const rumusLuas = document.querySelector('#rumusLuas');
-    const rumusKeliling = document.querySelector('#rumusKeliling');
-
-    rumusLuas.textContent = rumusLuasBangunDatar();
-    rumusKeliling.textContent = rumusKelilingBangunDatar();
 
     const input1 = document.querySelector('#input1');
     const input2 = document.querySelector('#input2');
@@ -29,14 +38,8 @@ formCalculate.addEventListener('submit', (e) => {
     const input4 = document.querySelector('#input4');
     const input5 = document.querySelector('#input5');
     
-    const resultKeliling = document.querySelector('#resultKeliling');
-    const resultLuas = document.querySelector('#resultLuas');
-
-    resultKeliling.textContent = `=  ${calculateKelilingBangunDatar()}`;
-    resultLuas.textContent = `= ${calculateLuasBangunDatar()}`;
-    
     updateResultContent();
-    input1.value = ''; 
+    input1.value = '';
     input2.value = '';
     input3.value = '';
     input4.value = '';
@@ -76,7 +79,7 @@ function updateAnchorNav() {
     const fixNav = header.offsetTop;
     if (window.scrollY > fixNav) {
         header.classList.add("navbar-fixed");
-        
+
         anchorNav.forEach(element => {
             if (window.innerWidth >= 768) {
                 element.classList.remove("group-hover:text-primary");
@@ -88,7 +91,7 @@ function updateAnchorNav() {
         });
     } else {
         header.classList.remove("navbar-fixed");
-        
+
         anchorNav.forEach(element => {
             element.classList.remove("group-hover:text-white");
             element.classList.add("group-hover:text-primary");
@@ -105,11 +108,9 @@ document.querySelector("#bangunDatar").addEventListener('change', function() {
     const choose = this.value;
     const pathBangunDatar = '../../public/assets/bangun_datar/';
     const imageContainer = document.querySelector("#displayBangunDatar");
-    const headerContent = document.querySelector("#headerContent");
+    const headerBangunDatar = document.querySelector("#headerBangunDatar");
 
-    document.querySelector("#headerBangunDatar").textContent = choose.replace(' Body', '');
-
-    headerContent.textContent = choose.replace(' Body', '');
+    headerBangunDatar.textContent = choose.replace(' Body', '');
     imageContainer.src = pathBangunDatar + choose + '.png';
 
     document.querySelector('#input4Container').style.display = 'none';
@@ -150,9 +151,9 @@ function checkBangunDatar() {
 //Menambahkan class ke tag img #displayBangunDatar
 function addClassBangunDatar(){
     const imageContainer = document.querySelector("#displayBangunDatar");
-    
+
     const fileName = checkBangunDatar();
-    
+
     imageContainer.className = '';
     switch(fileName) {
         case 'Persegi Panjang':
@@ -183,7 +184,7 @@ function addClassBangunDatar(){
             imageContainer.classList.add(...('my-auto s:w-[88px] md:w-32 md:h-32 l:w-40 l:h-40 lg:w-44 lg:h-44 xl:w-56 xl:h-56 2xl:w-60 2xl:h-60 md:mt-[34px] l:mt-10 lg:mt-20 xl:mt-20 2xl:mt-16').split(' '));
             break;
     }
-}  
+};
 
 const aboutBidang = {
     'Persegi Panjang': 'Persegi Panjang adalah bangun datar dua dimensi yang dibentuk oleh dua pasang sisi yang masing-masing sama panjang dan sejajar serta memiliki empat sudut siku-siku.',
@@ -213,7 +214,8 @@ function callAboutBidang() {
 function calculateLuasBangunDatar(){
     const fileName = checkBangunDatar();
 
-    let result = 0;   
+    let result = 0;
+
     const input1String = document.querySelector('#input1');
     const input2String = document.querySelector('#input2');
     const input5string = document.querySelector('#input5');
@@ -221,7 +223,7 @@ function calculateLuasBangunDatar(){
     const input1 = +input1String.value;
     const input2 = +input2String.value;
     const input5 = +input5string.value
-    
+
     const phi = Math.PI.toFixed(2);
 
     switch(fileName) {
@@ -260,8 +262,8 @@ function calculateLuasBangunDatar(){
 function calculateKelilingBangunDatar(){
     const fileName = checkBangunDatar();
 
-    let result = 0
-    
+    let result = 0;
+
     const input1String = document.querySelector('#input1');
     const input2String = document.querySelector('#input2');
     const input3String = document.querySelector('#input3');
@@ -271,7 +273,7 @@ function calculateKelilingBangunDatar(){
     const input2 = +input2String.value;
     const input3 = +input3String.value;
     const input4 = +input4String.value;
-    
+
     const phi = Math.PI.toFixed(2);
 
     switch(fileName) {
@@ -384,7 +386,7 @@ function updateInputBerdasarkanBangun(){
     input3Label.textContent = '';
     input4label.textContent = '';
     input5label.textContent = '';
-    
+
     input5Container.parentElement.classList.remove('pb-10');
 
     const bangunDatar = checkBangunDatar();
@@ -452,7 +454,7 @@ function updateResultContent(){
     const content1 = document.querySelector('#content1');
     const content2 = document.querySelector('#content2');
     const content3 = document.querySelector('#content3');
-    const content4 = document.querySelector('#content4');   
+    const content4 = document.querySelector('#content4');
     const content5 = document.querySelector('#content5');
 
     const calculateKeliling = document.querySelector('#calculateKeliling');
@@ -628,9 +630,8 @@ document.querySelector('#contactAdmin').addEventListener('submit', function(e) {
 
 let infoActive = false;
 
-//Perbaruan
 const closeButton = document.getElementById('closeButton');
-const allContainer2 = document.getElementById('allContainer2'); 
+const allContainer2 = document.getElementById('allContainer2');
 const modalOverlay2 = document.getElementById('modalOverlay2');
 const infoContainer2 = document.querySelector('#infoContainer2');
 
@@ -638,7 +639,7 @@ infoButton.addEventListener('click', function() {
     const bangunDatar = checkBangunDatar();
     if (window.innerWidth <= 600) {
         if (infoActive) return;
-    
+
         const infoContent2 = document.querySelector('#infoContent2');
         const infoHeader = document.querySelector('#infoHeader');
         const infoLuas = document.querySelector('#infoLuas');
@@ -656,15 +657,15 @@ infoButton.addEventListener('click', function() {
         infoHeader.textContent = bangunDatar;
         infoContent2.textContent = aboutBidang[bangunDatar];
         infoLuas.textContent = rumusLuasBangunDatar();
-        infoKeliling.textContent = rumusKelilingBangunDatar();                 
+        infoKeliling.textContent = rumusKelilingBangunDatar();
     }else{
         if (infoActive) return;
-        
+
         const infoContainer = document.getElementById('infoContainer');
         const infoContent = document.querySelector('#infoContent');
-        
+
         infoActive = true;
-        
+
         infoContainer.classList.remove('hidden');
         infoContent.textContent = aboutBidang[bangunDatar];
         setTimeout(() => {
@@ -688,7 +689,7 @@ closeButton.addEventListener('click', () => {
     }, 250);
     infoActive = false;
 });
-//Fungsinya sama seperti closeButton        
+//Fungsinya sama seperti closeButton
 allContainer2.addEventListener('click', () => {
     modalOverlay2.classList.remove('open-transition');
     infoContainer2.classList.remove('y-transition');
@@ -703,8 +704,8 @@ function resizeInfoContent(){
     if(window.innerWidth > 601){
         if(infoActive){
             modalOverlay2.classList.add('hidden');
-            modalOverlay2.classList.remove('opacity-100');    
-            return infoActive = false;        
+            modalOverlay2.classList.remove('opacity-100');
+            return infoActive = false;
         }
     };
 
@@ -712,15 +713,23 @@ function resizeInfoContent(){
 window.addEventListener('resize', resizeInfoContent);
 
 function checkInputLength() {
-    const input1 = document.querySelector('#input1').value;
-    const input2 = document.querySelector('#input2').value;
-    const input3 = document.querySelector('#input3').value;
-    const input4 = document.querySelector('#input4').value;
-    const input5 = document.querySelector('#input5').value;
+    const input1 = document.querySelector('#input1');
+    const input2 = document.querySelector('#input2');
+    const input3 = document.querySelector('#input3');
+    const input4 = document.querySelector('#input4');
+    const input5 = document.querySelector('#input5');
 
-   if(input1.length > 10 || input2.length > 10 || input3.length > 10 || input4.length > 10 || input5.length > 10){
-        toastr.warning('Input dilarang melebihi 10 karakter!', 'Anomali');
+   if(input1.value.length > 8 || input2.value.length > 8 || input3.value.length > 8 || input4.value.length > 8 || input5.value.length > 8){
+        toastr.warning('Input dilarang melebihi 8 karakter!', 'Anomali');
+        input1.value = '';
+        input2.value = '';
+        input3.value = '';
+        input4.value = '';
+        input5.value = '';
+
         return true;
     }
 
 }
+
+// MD bermasalah ketika panjang input = 10
