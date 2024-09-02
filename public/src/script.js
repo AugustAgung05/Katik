@@ -106,7 +106,7 @@ updateAnchorNav();
 
 document.querySelector("#bangunDatar").addEventListener('change', function() {
     const choose = this.value;
-    const pathBangunDatar = '../../public/assets/bangun_datar/';
+    const pathBangunDatar = 'public/assets/bangun_datar/';
     const imageContainer = document.querySelector("#displayBangunDatar");
     const headerBangunDatar = document.querySelector("#headerBangunDatar");
 
