@@ -35,7 +35,7 @@ html{
 }
 
 .x-line{
-  @apply w-[15px] h-[1.5px] block bg-secondary;
+  @apply w-[15px] h-[1.5px] block bg-black;
 }
 
 .hamburger-menu{
