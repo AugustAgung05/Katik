@@ -1,0 +1,8 @@
+# Javascript Minify
+dist/
+
+# CSS Minify
+public/src/css/output.css
+
+#Node Modules
+node_modules
