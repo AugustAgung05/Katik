@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx tailwindcss -i public/src/css/input.css -o public/src/css/output.css --watch",
-    "style": "npx tailwindcss -o public/src/css/output.css --minify",
+    "tailwind": "npx tailwindcss -i public/src/css/input.css -o dist/output.css --watch",
+    "style": "npx tailwindcss -o dist/output.css --minify",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
