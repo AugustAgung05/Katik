@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./public/**/*.html', './public/src/**/*.js'],
+  content: ['./**/*.html', './public/src/**/*.js'],
   theme: {
     container: {
       center: true,
@@ -24,7 +24,7 @@ module.exports = {
         'footer': '#723B13',
         'navigation': '#C27803',
         'calculation': '#ECECEC',
-        'button': '#1E90FF',
+        'button': '#DC2626 ',
         'border': '#E2E8F0',
       },
       screens: {
